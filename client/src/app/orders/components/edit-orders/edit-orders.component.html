@@ -1,0 +1,113 @@
+<div class="container mt-3">
+    <div class="row">
+      <div class="col">
+        <p class="h3 text-success">Update  Order</p>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aspernatur assumenda consectetur, culpa cupiditate dolore dolores eveniet excepturi inventore itaque numquam optio, quaerat voluptas. Eius impedit nemo obcaecati? Quam, quas!</p>
+      </div>
+    </div>
+    <!--<pre>{ | json}}</pre>-->
+    <div class="row">
+      <div class="col-md-5 animated zoomInUp delay-1s">
+        <!-- Empty form Data -->
+        <div *ngIf="emptyFields" class="alert alert-danger alert-dismissible animated zoomIn">
+          <button class="close" data-dismiss="alert">
+            <i class="fa fa-times-circle"></i>
+          </button>
+          <span class="font-weight-bold">Please fill in the Fields</span>
+        </div>
+        <div class="card">
+          <div class="card-header bg-success text-white">
+            <p class="h4">Create Order</p>
+          </div>
+          <div class="card-body bg-light">
+            <form (submit)="submitUpdateOrder()">
+              <div class="form-group">
+                <input
+                    #orderNum="ngModel"
+                    [class.is-valid]="orderNum.touched&&orderNum.valid"
+                    [class.is-invalid]="orderNum.touched&&orderNum.invalid"
+                    type="text" required name="orderNum"  id="ordNumber"
+                    [value]="selectedOrders.orderNumber"
+                    [(ngModel)]="selectedOrders.orderNumber" class="form-control" placeholder="Order Number"/>
+                <div *ngIf="orderNum.touched&&orderNum.invalid">
+                  <small class="text-danger">Enter Order Number</small>
+                </div>
+                <small *inIf="orderNum.touched&&orderNum.valid" class="text-success"> Looks Good!...</small>
+              </div>
+              <div class="form-group">
+                <input
+                    #dueDate="ngModel"
+                    [class.is-valid]="dueDate.touched&&dueDate.valid"
+                    [class.is-invalid]="dueDate.touched&&dueDate.invalid"
+                    type="text" required name="dueDate" id="ordDueDate"
+                    [value]="selectedOrders.orderDueDate"
+                    [(ngModel)]="selectedOrders.orderDueDate" class="form-control" placeholder="Order Due Date"/>
+                <div *ngIf="dueDate.touched&&dueDate.invalid">
+                  <small class="text-danger">Enter Order Due Date</small>
+                </div>
+                <small *inIf="dueDate.touched&&dueDate.valid" class="text-success"> Looks Good!...</small>
+              </div>
+              <div class="form-group">
+                <input
+                    #ordTotal="ngModel"
+                    [class.is-valid]="ordTotal.touched&&ordTotal.valid"
+                    [class.is-invalid]="ordTotal.touched&&ordTotal.invalid"
+                    [value]="selectedOrders.orderTotal"
+                    [(ngModel)]="selectedOrders.orderTotal" required pattern="[0-9]" type="text" name="ordTotal" id="orTotal" class="form-control"
+                    placeholder="Total Order"/>
+                <div *ngIf="ordTotal.touched&&ordTotal.invalid">
+                  <small class="text-danger">Enter Order Total</small>
+                </div>
+                <small *inIf="ordTotal.touched&&ordTotal.valid" class="text-success"> Looks Good!...</small>
+              </div>
+              <div class="form-group">
+                <input
+                    #buyerName="ngModel"
+                    [class.is-valid]="buyerName.touched&&buyerName.valid"
+                    [class.is-invalid]="buyerName.touched&&buyerName.invalid"
+                    [value]="selectedOrders.customerbuyerName"
+                    [(ngModel)]="selectedOrders.customerbuyerName" required  type="text" name="buyerName"
+                    id="custbuyerName" class="form-control" placeholder="Customer buyer Name"/>
+                <div *ngIf="buyerName.touched&&buyerName.invalid">
+                  <small class="text-danger">Enter Customer Buyer Name</small>
+                </div>
+                <small *inIf="buyerName.touched&&buyerName.valid" class="text-success"> Looks Good!...</small>
+              </div>
+              <div class="form-group">
+                <textarea
+                    #address="ngModel"
+                    [class.is-valid]="address.touched&&address.valid"
+                    [class.is-invalid]="address.touched&&address.invalid"
+                    type="text" [value]="selectedOrders.customerAddress"
+                    [(ngModel)]="selectedOrders.customerAddress" required name="address" id="custAddress"
+                    class="form-control text-black" rows="4" placeholder="Address">
+                </textarea>
+                <div *ngIf="address.touched&&address.invalid">
+                  <small class="text-danger">Enter Customer Address</small>
+                </div>
+                <small *inIf="address.touched&&address.valid" class="text-success"> Looks Good!...</small>
+              </div>
+              <div class="form-group">
+                <input
+                    #phone="ngModel"
+                    [class.is-valid]="phone.touched&&phone.valid"
+                    [class.is-invalid]="phone.touched&&phone.invalid"
+                    [value]="selectedOrders.customerPhone"
+                    [(ngModel)]="selectedOrders.customerPhone" required pattern="[0-9]{10}" type="text" name="phone"
+                    id="custPhone" class="form-control" placeholder="Customer Phone Number"/>
+                <div *ngIf="phone.touched&&phone.invalid">
+                  <small class="text-danger">Enter Customer Phone Number</small>
+                </div>
+                <small *inIf="phone.touched&&phone.valid" class="text-success"> Looks Good!...</small>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-sm btn-success"/>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+      </div>
+    </div>
+  </div>

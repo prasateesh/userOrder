@@ -1,0 +1,68 @@
+<!-- Alert Message -->
+<div *ngIf="message"  class="alert alert-success alert-dismissible sticky-top animated slideInDown">
+    <button class="close" data-dismiss="alert">
+      <i class="fa fa-times-circle"></i>
+    </button>
+    {{message}}
+  </div>
+
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-md-4 m-auto">
+        <div class="card animated jello">
+          <div class="card-header bg-secondary text-white">
+            <p class="h4">Register Here</p>
+          </div>
+          <div class="card-body bg-light">
+            <form (submit)="userRegistration()">
+              <div class="form-group">
+                <input
+                    #name="ngModel"
+                    [class.is-valid]="name.touched&&name.valid"
+                    [class.is-invalid]="name.touched&&name.invalid"
+                    type="text" class="form-control" placeholder="User name" required pattern="[A-Za-z]{10}" name="name" [(ngModel)]="user.name">
+                <div *ngIf="name.touched&&name.invalid">
+                  <small class="text-danger">Enter Proper Name</small>
+                </div>
+                <small *inIf="name.touched&&name.valid" class="text-success"> Looks Good!...</small>
+              </div>
+              <div class="form-group">
+                <input
+                    #email="ngModel"
+                    [class.is-valid]="email.touched&&email.valid"
+                    [class.is-invalid]="email.touched&&email.invalid"
+                    type="text" class="form-control"
+                    placeholder="User Email Id"
+                    required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                    name="email" [(ngModel)]="user.email">
+                <div *ngIf="email.touched&&email.invalid">
+                  <small class="text-danger">Enter Proper Name</small>
+                </div>
+                <small *inIf="email.touched&&email.valid" class="text-success"> Looks Good!...</small>
+              </div>
+              <div class="form-group">
+                <input
+                    #password="ngModel"
+                    [class.is-valid]="password.touched&&password.valid"
+                    [class.is-invalid]="password.touched&&password.invalid"
+                    type="text" class="form-control"
+                    placeholder="User Password"
+                    required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    name="password" [(ngModel)]="user.password">
+                <div *ngIf="password.touched&&password.invalid">
+                  <small class="text-danger">Enter Proper Name</small>
+                </div>
+                <small *inIf="password.touched&&password.valid" class="text-success"> Looks Good!...</small>
+              </div>
+              <div>
+                <input type="Submit" class="btn btn-sm bg-primary" value="Register">
+              </div>
+              <small>Don't have an Account ?
+                <a routerLink="/users/login" class="text-white">Login</a>
+              </small>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
