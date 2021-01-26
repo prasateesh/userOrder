@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
     name : '',
     email : '',
     password : ''
-    
+
   };
   public userDetails:IUser;
   public errorMessage:string;
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         console.log(token)
         this.userDetails=(data.user);
         localStorage.setItem('token',token);
-        localStorage.setItem('users',JSON.stringify(this.userDetails));
+        localStorage.setItem('users',JSON.stringify(this.userDetails.name));
         this.router.navigate(['/orders/view-orders']);
 
       },

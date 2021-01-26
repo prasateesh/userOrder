@@ -18,7 +18,7 @@
         <a routerLink="/users/register" class="nav-link">Register</a>
       </li>
       <li class="nav-item px-2" *ngIf="isLogin()">
-        <a routerLink="/" class="nav-link">
+        <a routerLink="/orders/view-orders" class="nav-link">
           <img [src]="getUser()?.avatar" width="25" height="25" class="rounded-circle" alt="">
           {{getUser().name}}</a>
       </li>
